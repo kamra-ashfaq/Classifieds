@@ -19,7 +19,7 @@ class homeInteractor {
 
 extension homeInteractor: homeInteractorType {
     
-    func callClassifiedsEndpoint(completion: @escaping (ServiceResult<homeEntity>) -> Void) {
+    func callClassifiedsEndpoint(completion: @escaping (ServiceResult<resultEntity>) -> Void) {
         
         remoteDataManager?.getClassifieds(completion: { (result) in
             switch result {

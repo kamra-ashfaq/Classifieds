@@ -4,23 +4,38 @@
 //
 //  Created by kamran on 08/02/2021.
 //
+import Foundation
+import ObjectMapper
 
-import Freddy
+struct homeEntity: Mappable {
+    var uid: String?
+    var name: String?
+    var price: String?
+    var imageUrl: [String]?
+    var imageThumbnail: [String]?
+    var created_at: String?
+    init?(map: Map) {
 
-struct homeEntity {
-    var name: String
-    var price: String
-    var imageUrl: String
-    var imageThumbnail: String
+    }
+
+    mutating func mapping(map: Map) {
+        uid     <- map["uid"]
+        name     <- map["name"]
+        price     <- map["price"]
+        imageUrl     <- map["image_urls"]
+        imageThumbnail     <- map["image_urls_thumbnails"]
+        created_at    <- map["created_at"]
+    }
 }
 
-extension homeEntity: JSONDecodable {
+struct resultEntity: Mappable {
+    var results: [homeEntity]?
     
-    init(json: JSON) throws {
-        name = try json.getString(at: "name")
-        price = try json.getString(at: "price")
-        imageUrl = try json.getString(at: "image_urls")
-        imageThumbnail = try json.getString(at: "image_urls_thumbnails")
+    init?(map: Map) {
+
     }
-    
+
+    mutating func mapping(map: Map) {
+        results     <- map["results"]
+    }
 }

@@ -12,7 +12,6 @@ class homeViewController: UIViewController {
     
     var presenter: homePresenterType?
     
-    
     private let navigationView: UIView = {
         let view = UIView()
         view.accessibilityIdentifier = "navigationView"
@@ -38,7 +37,7 @@ class homeViewController: UIViewController {
         label.minimumScaleFactor = 0.25
         label.accessibilityIdentifier = "titleLabel"
         label.tag = Tag.titleLabel.rawValue
-        label.textColor =  UIColor.black
+        label.textColor =  Palette.cobaltBlue.color
         return label
     }()
     
@@ -55,7 +54,7 @@ class homeViewController: UIViewController {
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-        indicator.color = UIColor.black
+        indicator.color = Palette.cobaltBlue.color
         indicator.hidesWhenStopped = true
         return indicator
     }()
@@ -67,19 +66,22 @@ class homeViewController: UIViewController {
         setupViews()
         // Do any additional setup after loading the view.
         
-        presenter?.getClassifiedsList(completion: { result in
-            switch result {
-            case .success(let responseObj):
-                print(responseObj)
-            case .failure(_):
-                print("Error")
-            }
-        })
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        activityIndicator.startAnimating()
+        presenter?.getClassifiedsList(completion: { (result) in
+            switch result {
+            case .success(responseObject: _):
+                self.classifiedTableView.reloadData()
+                self.activityIndicator.stopAnimating()
+            case .failure(error: let err):
+                self.activityIndicator.stopAnimating()
+                self.showErrorAlertWith(title: "Error", message: err)
+            }
+        })
+ 
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,9 +134,32 @@ class homeViewController: UIViewController {
             make.bottom.equalTo(view.snp.bottomMargin)
             make.width.equalTo(335 / 375 * UIScreen.main.bounds.width)
         }
+        
+        activityIndicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.height.equalTo(45)
+            make.width.equalTo(45)
+        }
+        
     }
     
 }
+
+// MARK: - UITableViewDelegate
+
+extension homeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+}
+
 // MARK: HomeViewType
 
 extension homeViewController: homeViewType {
@@ -153,20 +178,6 @@ extension homeViewController: homeViewType {
         case titleLabel
         case logoImageView
         case classifiedTableView
-    }
-    
-}
-
-// MARK: - UITableViewDelegate
-extension homeViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-        return 120
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
     }
     
 }

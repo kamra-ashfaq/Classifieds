@@ -22,13 +22,13 @@ class homeRouter {
 
 extension homeRouter: homeRouterType {
     
-    func presentHomeViewController(sender: UIViewController) {
-        guard let controller = self.container?.resolve(homeViewType.self) as? homeViewController else { return }
-        sender.navigationController?.navigationItem.hidesBackButton = true
-        sender.navigationController?.navigationBar.isHidden = true
-        sender.navigationController?.navigationBar.topItem?.title = ""
-        sender.navigationController?.pushViewController(controller, animated: false)
-        
+    func presentHomeViewController(in window: UIWindow) {
+        guard let controller = container?.resolve(homeViewType.self) as? homeViewController else { return }
+        let rootViewController = UINavigationController(rootViewController: controller)
+        rootViewController.navigationBar.isHidden = true
+        window.makeKeyAndVisible()
+        window.backgroundColor = Palette.white.color
+        window.rootViewController = rootViewController
     }
     
 }

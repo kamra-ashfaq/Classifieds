@@ -11,6 +11,7 @@ import UIKit
 enum Palette {
     
     case black
+    case white
     case cobaltBlue
     case clear
     case darkPurple
@@ -19,6 +20,7 @@ enum Palette {
     var color: UIColor {
         switch self {
         case .black: return UIColor.rgb(red: 0, green: 0, blue: 0)
+        case .white: return UIColor.rgb(red: 255, green: 255, blue: 255)
         case .clear: return UIColor.clear
         case .cobaltBlue: return UIColor.rgb(red: 56, green: 84, blue: 143)
         case .darkPurple: return UIColor.rgb(red: 48, green: 35, blue: 174)

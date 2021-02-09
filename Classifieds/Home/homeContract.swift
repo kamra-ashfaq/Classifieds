@@ -16,22 +16,22 @@ protocol homeViewType: class {
 }
 
 protocol homeInteractorType: class {
-    func callClassifiedsEndpoint(completion: @escaping (ServiceResult<homeEntity>) -> Void)
+    func callClassifiedsEndpoint(completion: @escaping (ServiceResult<resultEntity>) -> Void)
 }
 
 protocol homePresenterType: class {
     
     func viewDidLoad()
-    func getClassifiedsList(completion: @escaping ((ServiceResult<homeEntity>) -> Void))
+    func getClassifiedsList(completion: @escaping ((ServiceResult<resultEntity>) -> Void))
  
 }
 
 protocol homeRouterType: class {
-    func presentHomeViewController(sender: UIViewController)
+    func presentHomeViewController(in window: UIWindow)
 }
 
 protocol homeRemoteDataManagerType: class {
-    func getClassifieds(completion: @escaping (ServiceResult<homeEntity>) -> Void)
+    func getClassifieds(completion: @escaping (ServiceResult<resultEntity>) -> Void)
 }
 
 

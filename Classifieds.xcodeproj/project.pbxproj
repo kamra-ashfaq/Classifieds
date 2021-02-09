@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8473C2A825D183EC009ED8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C2A725D183EC009ED8D0 /* AppDelegate.swift */; };
-		8473C2AA25D183EC009ED8D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C2A925D183EC009ED8D0 /* SceneDelegate.swift */; };
 		8473C2AC25D183EC009ED8D0 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C2AB25D183EC009ED8D0 /* homeViewController.swift */; };
 		8473C2AF25D183EC009ED8D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8473C2AD25D183EC009ED8D0 /* Main.storyboard */; };
 		8473C2B125D183ED009ED8D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473C2B025D183ED009ED8D0 /* Assets.xcassets */; };
@@ -34,6 +33,8 @@
 		8473C3D525D1B8C2009ED8D0 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8473C34325D1964F009ED8D0 /* Freddy.framework */; };
 		8473C3DF25D1B99A009ED8D0 /* homeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C3DE25D1B99A009ED8D0 /* homeEntity.swift */; };
 		8473C3F325D1BD7B009ED8D0 /* Service+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C3F225D1BD7B009ED8D0 /* Service+Utils.swift */; };
+		8473C43825D29F4B009ED8D0 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8473C43725D29F4B009ED8D0 /* ObjectMapper */; };
+		8473C44425D2E9FD009ED8D0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8473C44325D2E9FD009ED8D0 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,6 @@
 /* Begin PBXFileReference section */
 		8473C2A425D183EC009ED8D0 /* Classifieds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Classifieds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8473C2A725D183EC009ED8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8473C2A925D183EC009ED8D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8473C2AB25D183EC009ED8D0 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		8473C2AE25D183EC009ED8D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8473C2B025D183ED009ED8D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,8 +90,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8473C43825D29F4B009ED8D0 /* ObjectMapper in Frameworks */,
 				8473C33225D195D4009ED8D0 /* Alamofire in Frameworks */,
 				8473C33825D195EA009ED8D0 /* SnapKit in Frameworks */,
+				8473C44425D2E9FD009ED8D0 /* SDWebImage in Frameworks */,
 				8473C36125D19996009ED8D0 /* Reachability in Frameworks */,
 				8473C33E25D19617009ED8D0 /* Swinject in Frameworks */,
 				8473C3D525D1B8C2009ED8D0 /* Freddy.framework in Frameworks */,
@@ -195,7 +197,6 @@
 		8473C2DF25D188C6009ED8D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8473C2A925D183EC009ED8D0 /* SceneDelegate.swift */,
 				8473C2AD25D183EC009ED8D0 /* Main.storyboard */,
 				8473C2B025D183ED009ED8D0 /* Assets.xcassets */,
 				8473C2B225D183ED009ED8D0 /* LaunchScreen.storyboard */,
@@ -308,6 +309,8 @@
 				8473C33725D195EA009ED8D0 /* SnapKit */,
 				8473C33D25D19617009ED8D0 /* Swinject */,
 				8473C36025D19996009ED8D0 /* Reachability */,
+				8473C43725D29F4B009ED8D0 /* ObjectMapper */,
+				8473C44325D2E9FD009ED8D0 /* SDWebImage */,
 			);
 			productName = Classifieds;
 			productReference = 8473C2A425D183EC009ED8D0 /* Classifieds.app */;
@@ -385,6 +388,8 @@
 				8473C33625D195EA009ED8D0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8473C33C25D19617009ED8D0 /* XCRemoteSwiftPackageReference "Swinject" */,
 				8473C35F25D19996009ED8D0 /* XCRemoteSwiftPackageReference "Reachability" */,
+				8473C43625D29F4B009ED8D0 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				8473C44225D2E9FD009ED8D0 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 8473C2A525D183EC009ED8D0 /* Products */;
 			projectDirPath = "";
@@ -465,7 +470,6 @@
 				8473C3F325D1BD7B009ED8D0 /* Service+Utils.swift in Sources */,
 				8473C36E25D19D28009ED8D0 /* home.swift in Sources */,
 				8473C38B25D1AE43009ED8D0 /* Typography.swift in Sources */,
-				8473C2AA25D183EC009ED8D0 /* SceneDelegate.swift in Sources */,
 				8473C39325D1B00E009ED8D0 /* Palette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,6 +845,22 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		8473C43625D29F4B009ED8D0 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		8473C44225D2E9FD009ED8D0 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -863,6 +883,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8473C35F25D19996009ED8D0 /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		8473C43725D29F4B009ED8D0 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8473C43625D29F4B009ED8D0 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		8473C44325D2E9FD009ED8D0 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8473C44225D2E9FD009ED8D0 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

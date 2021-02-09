@@ -7,7 +7,6 @@
 
 import Alamofire
 import Foundation
-import Freddy
 
 enum Result<T> {
     
@@ -129,44 +128,3 @@ extension NetworkResponseHandler {
     }
     
 }
-
-extension DataRequest {
-    
-    static func jsonResponseSerializer() -> DataResponseSerializer<JSON> {
-        return DataResponseSerializer(serializeResponse: { (_, response, data, error) in
-            guard error == nil else {
-                return .failure(ClassifiedsError.failure(error: error))
-            }
-            
-            guard let statusCode = response?.statusCode, (200..<300).contains(statusCode) else {
-                return .failure(ClassifiedsError.failure(error: error))
-            }
-            
-            let result = Request.serializeResponseData(response: response, data: data, error: error)
-            
-            guard case .success = result else {
-                return .failure(ClassifiedsError.failure(error: error))
-            }
-            
-            do {
-                let json = try JSON(data: result.value!)
-                return .success(json)
-            } catch let error {
-                return .failure(ClassifiedsError.failure(error: error))
-            }
-        })
-    }
-    
-    @discardableResult
-    func ClassifiedsResponseJSON(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<JSON>) -> Void) -> Self {
-        return validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json; charset=UTF-8"]).response(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer(), completionHandler: completionHandler)
-    }
-    
-    @discardableResult
-    func ClassifiedsResponseData(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<Data>) -> Void) -> Self {
-        return validate(statusCode: 200..<300).validate(contentType: ["application/json; charset=UTF-8"]).responseData(queue: queue, completionHandler: completionHandler)
-    }
-    
-}
-
