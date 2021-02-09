@@ -121,7 +121,7 @@ class detailViewController: UIViewController {
             make.top.equalTo(navigationView.snp.bottom)
             make.left.equalTo(view.snp.leftMargin)
             make.right.equalTo(view.snp.rightMargin)
-            make.height.equalTo(250 / 667 * UIScreen.main.bounds.height)
+            make.height.equalTo(375 / 667 * UIScreen.main.bounds.height)
         }
         
         thumbnailImageView.snp.makeConstraints { (make) in
