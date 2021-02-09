@@ -23,11 +23,12 @@ protocol homePresenterType: class {
     
     func viewDidLoad()
     func getClassifiedsList(completion: @escaping ((ServiceResult<resultEntity>) -> Void))
- 
+    func didSelectRowAt(indexPath: IndexPath)
 }
 
 protocol homeRouterType: class {
     func presentHomeViewController(in window: UIWindow)
+    func presentDetailViewController(sender: UIViewController, selectedRow: homeEntity)
 }
 
 protocol homeRemoteDataManagerType: class {

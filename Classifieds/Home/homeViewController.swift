@@ -64,12 +64,7 @@ class homeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        // Do any additional setup after loading the view.
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         activityIndicator.startAnimating()
         presenter?.getClassifiedsList(completion: { (result) in
             switch result {
@@ -81,7 +76,12 @@ class homeViewController: UIViewController {
                 self.showErrorAlertWith(title: "Error", message: err)
             }
         })
- 
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -156,6 +156,10 @@ extension homeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectRowAt(indexPath: indexPath)
     }
     
 }

@@ -46,6 +46,10 @@ extension homePresenter: homePresenterType {
         
     }
     
+    func didSelectRowAt(indexPath: IndexPath) {
+        self.router?.presentDetailViewController(sender: self.view as! UIViewController, selectedRow: self.dataSource[indexPath.row])
+    }
+
 }
 
 // MARK: - UITableViewDatasource
@@ -61,9 +65,9 @@ extension homePresenter: UITableViewDataSource {
         cell.nameLabel.text = self.dataSource[indexPath.row].name
         cell.priceLabel.text = self.dataSource[indexPath.row].price
         cell.createdLabel.text = self.dataSource[indexPath.row].created_at!
+        cell.thumbnailImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.thumbnailImageView.sd_setImage(with: URL(string: self.dataSource[indexPath.row].imageThumbnail?[0] ?? ""), placeholderImage: UIImage(named: "LaunchScreen"))
         return cell
     }
     
 }
-

@@ -31,6 +31,21 @@ extension homeRouter: homeRouterType {
         window.rootViewController = rootViewController
     }
     
+    func presentDetailViewController(sender: UIViewController, selectedRow: homeEntity) {
+        
+        let controller = detailViewController()
+        controller.details = selectedRow
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut )
+        transition.type = CATransitionType.fade
+        sender.navigationController?.view.layer.add(transition, forKey: nil)
+        
+        sender.navigationController?.navigationBar.isHidden = false
+        sender.navigationController?.navigationBar.topItem?.title = selectedRow.name
+        sender.navigationController?.pushViewController(controller, animated: false)
+        
+    }
+    
 }
-
-

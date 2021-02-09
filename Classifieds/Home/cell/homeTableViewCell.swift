@@ -85,6 +85,7 @@ class homeTableViewCell: UITableViewCell {
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(priceLabel.snp.bottom)
             make.left.equalTo(thumbnailImageView.snp.right).offset(5)
+            make.right.equalToSuperview().offset(-30)
         }
         
         createdLabel.snp.makeConstraints { (make) in
